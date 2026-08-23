@@ -12,7 +12,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="mt-8 w-full border-t border-[#d8d1c6] py-6">
+    <footer className="mt-8 w-full py-6">
+      <div className="animated-divider" />
       <div className="flex flex-col items-center justify-between gap-4 text-xs text-[#7c7469] sm:flex-row sm:text-sm">
         
         {/* Left: Branding Badge */}
@@ -27,7 +28,7 @@ export function Footer() {
           <div className="inline-flex items-center gap-2 text-[#1b1a18]">
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-1.5 hover:text-[#b64b32] transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-[#b64b32] transition-all duration-300 hover:translate-x-1"
               title="Send email"
             >
               <FaEnvelope className="text-xs text-slate-400 dark:text-slate-500" />
@@ -38,7 +39,7 @@ export function Footer() {
 
             <button
               onClick={handleCopy}
-              className="p-1 transition-colors hover:text-[#b64b32]"
+              className="p-1 transition-all duration-300 hover:text-[#b64b32] hover:scale-110"
               aria-label="Copy email address"
               title="Copy to clipboard"
             >

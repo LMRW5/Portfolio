@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import {
   X,
@@ -77,7 +78,7 @@ export const GalleryArchitecture: React.FC<GalleryArchitectureProps> = ({ items 
       </div>
 
       {/* Lightbox Modal Overlay */}
-      {selectedItem && (
+      {selectedItem && createPortal(
         <div
           onClick={handleClose}
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm"
@@ -179,11 +180,12 @@ export const GalleryArchitecture: React.FC<GalleryArchitectureProps> = ({ items 
               </p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Fullscreen Expanded View */}
-      {selectedItem && currentPhoto && isExpanded && (
+      {selectedItem && currentPhoto && isExpanded && createPortal(
         <div
           onClick={() => setIsExpanded(false)}
           className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#1b1a18]/95 p-4 backdrop-blur-md sm:p-8"
@@ -239,7 +241,8 @@ export const GalleryArchitecture: React.FC<GalleryArchitectureProps> = ({ items 
               </button>
             </>
           )}
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

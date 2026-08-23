@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import {
   FaExternalLinkAlt,
@@ -125,7 +126,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {/* Rectangular Card Container */}
       <div
         onClick={() => setIsOpen(true)}
-        className="group relative flex flex-col overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-[#b64b32] hover:shadow-[6px_6px_0_#d8d1c6]"
+        className="group relative flex flex-col overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] cursor-pointer transition-all duration-400 hover:-translate-y-1.5 hover:border-[#b64b32] hover:shadow-[0_8px_30px_rgba(182,75,50,0.12),6px_6px_0_#d8d1c6] animate-fade-up"
       >
         <div className="relative h-48 w-full overflow-hidden bg-[#e7e1d8]">
           <img
@@ -139,7 +140,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex flex-1 flex-col justify-between p-4">
           <div>
             <div className="flex items-center justify-between gap-2">
-              <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-colors duration-200 group-hover:text-[#b64b32]">
+              <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-all duration-300 group-hover:text-[#b64b32] group-hover:translate-x-1">
                 {project.title}
               </h3>
               {project.date && (
@@ -168,10 +169,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Expanded Project Modal Overlay */}
-      {isOpen && (
+      {isOpen && createPortal(
         <div
           onClick={handleDismiss}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm animate-fade-in duration-200"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -179,12 +180,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           >
             <button
               onClick={handleDismiss}
-              className="absolute right-4 top-4 z-10 rounded-full p-2 text-[#7c7469] transition-colors hover:bg-[#e7e1d8] hover:text-[#1b1a18]"
+              className="absolute right-4 top-4 z-10 rounded-full p-2 text-[#7c7469] transition-all duration-300 hover:bg-[#e7e1d8] hover:text-[#1b1a18] hover:rotate-90 hover:scale-110"
             >
               <FaTimes className="text-base" />
             </button>
 
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 animate-fade-up">
               <h2 className="text-2xl font-bold tracking-tight">{project.title}</h2>
               {project.date && (
                 <span className="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-[#7c7469]">
@@ -310,7 +311,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-[#d8d1c6] bg-[#e7e1d8] px-3 py-1.5 text-xs font-medium transition-colors hover:bg-[#d8d1c6]"
+                    className="inline-flex items-center gap-1.5 border border-[#d8d1c6] bg-[#e7e1d8] px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:bg-[#d8d1c6] hover:scale-105 btn-ripple"
                   >
                     <FaGithub className="text-sm" /> GitHub
                   </a>
@@ -320,7 +321,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.devpostUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-[#d8a08f] px-3 py-1.5 text-xs font-medium text-[#b64b32] transition-colors hover:bg-[#f0ddd5]"
+                    className="inline-flex items-center gap-1.5 border border-[#d8a08f] px-3 py-1.5 text-xs font-medium text-[#b64b32] transition-all duration-300 hover:bg-[#f0ddd5] hover:scale-105 btn-ripple"
                   >
                     <SiDevpost className="text-sm" /> Devpost
                   </a>
@@ -330,7 +331,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-[#1b1a18] px-3 py-1.5 text-xs font-medium text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
+                    className="inline-flex items-center gap-1.5 bg-[#1b1a18] px-3 py-1.5 text-xs font-medium text-[#f4f1eb] transition-all duration-300 hover:bg-[#b64b32] hover:scale-105 btn-ripple"
                   >
                     <FaExternalLinkAlt className="text-[10px]" /> Live Demo
                   </a>
@@ -338,14 +339,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Fullscreen Lightbox Overlay with Navigation */}
-      {currentMedia && selectedIndex !== null && (
+      {currentMedia && selectedIndex !== null && createPortal(
         <div
           onClick={() => setSelectedIndex(null)}
-          className="fixed inset-0 z-[60] flex flex-col items-center justify-between bg-[#1b1a18]/95 p-6 backdrop-blur-md animate-in fade-in duration-150"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-between bg-[#1b1a18]/95 p-6 backdrop-blur-md animate-fade-in duration-150"
         >
           <button
             onClick={() => setSelectedIndex(null)}
@@ -440,7 +442,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

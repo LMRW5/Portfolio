@@ -1,4 +1,5 @@
 import { ProjectCard, type ProjectData } from "../components/ProjectCard";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export interface MediaItem {
   type: "image" | "video";
@@ -220,9 +221,12 @@ Core Features & Technical Architecture:
 ];
 
 export function Projects() {
+  const header = useScrollReveal();
+  const grid = useScrollReveal({ threshold: 0.05 });
+
   return (
     <div className="space-y-8">
-      <div className="pb-6">
+      <div ref={header.ref} className={`reveal ${header.isVisible ? "visible" : ""} pb-6`}>          
         <h1 className="font-['Space_Grotesk'] text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Projects</h1>
         <p className="mt-2 max-w-xl text-sm text-[#7c7469]">
           cool things i developed and co-developed.
@@ -230,7 +234,7 @@ export function Projects() {
       </div>
 
       {/* 2-column grid layout */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div ref={grid.ref} className={`reveal ${grid.isVisible ? "visible" : ""} grid grid-cols-1 gap-5 sm:grid-cols-2`}>          
         {projectsData.map((project) => (
           <ProjectCard key={project.id} project={project as ProjectData} />
         ))}

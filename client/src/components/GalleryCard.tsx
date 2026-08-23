@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Images, X, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Minimize2 } from "lucide-react";
 
 export interface GalleryMedia {
@@ -34,7 +35,7 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({ item, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] transition-all hover:-translate-y-1 hover:border-[#b64b32] hover:shadow-[6px_6px_0_#d8d1c6]"
+      className="group relative cursor-pointer overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] transition-all duration-400 hover:-translate-y-1.5 hover:border-[#b64b32] hover:shadow-[0_8px_30px_rgba(182,75,50,0.12),6px_6px_0_#d8d1c6] animate-fade-up"
     >
       <div className="aspect-[4/3] w-full overflow-hidden bg-[#e7e1d8]">
         <img
@@ -48,7 +49,7 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({ item, onClick }) => {
           <span>{item.category}</span>
           <span>{item.date}</span>
         </div>
-        <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-colors group-hover:text-[#b64b32]">
+        <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-all duration-300 group-hover:text-[#b64b32] group-hover:translate-x-1">
           {item.title}
         </h3>
         {item.photos.length > 1 && (
@@ -126,10 +127,11 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
   return (
     <>
       {/* Standard Modal View */}
-      <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm"
-        onClick={onClose}
-      >
+      {createPortal(
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm"
+          onClick={onClose}
+        >
         <div
           className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto border border-[#d8d1c6] bg-[#faf8f4] p-6 text-[#1b1a18] shadow-[8px_8px_0_#d8d1c6]"
           onClick={(e) => e.stopPropagation()}
@@ -230,10 +232,12 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
             </div>
           )}
         </div>
-      </div>
+      </div>,
+        document.body
+      )}
 
       {/* Fullscreen Expanded View Overlay */}
-      {isExpanded && (
+      {isExpanded && createPortal(
         <div
           className="fixed inset-0 z-[60] flex flex-col justify-between bg-[#1b1a18]/95 p-4 backdrop-blur-md sm:p-8"
           onClick={() => setIsExpanded(false)}
@@ -296,7 +300,8 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               {currentMedia.caption || item.description || item.title}
             </p>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

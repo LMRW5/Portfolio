@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   FaGraduationCap,
   FaBriefcase,
@@ -7,174 +6,233 @@ import {
   FaCode,
   FaTrophy,
   FaArrowRight,
-  FaTerminal,
+  FaGamepad,
+  FaDumbbell,
 } from "react-icons/fa";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
+function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const { ref, isVisible } = useScrollReveal();
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${isVisible ? "visible" : ""} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function AchievementCard({
+  href,
+  icon,
+  title,
+  subtitle,
+  borderColor,
+  shadowColor,
+  iconBg,
+  iconColor,
+  arrowColor,
+}: {
+  href?: string;
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+  borderColor: string;
+  shadowColor: string;
+  iconBg: string;
+  iconColor: string;
+  arrowColor: string;
+}) {
+  const cardClasses = "group achievement-card flex items-center gap-4 rounded-xl border border-[#d8d1c6] bg-[#faf8f4] p-4 transition-all duration-300 hover:-translate-y-0.5";
+  
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={`${cardClasses} hover:${borderColor} ${shadowColor}`}>
+        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconBg} ${iconColor}`}>
+          {icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-[#1b1a18]">{title}</p>
+          <p className="text-xs text-[#7c7469] truncate">{subtitle}</p>
+        </div>
+        <FaArrowRight className={`shrink-0 text-xs text-[#d8d1c6] transition-all duration-300 group-hover:translate-x-1 group-hover:${arrowColor}`} />
+      </a>
+    );
+  }
+
+  return (
+    <div className={`${cardClasses}`}>
+      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${iconBg} ${iconColor}`}>
+        {icon}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium text-[#1b1a18]">{title}</p>
+        <p className="text-xs text-[#7c7469] truncate">{subtitle}</p>
+      </div>
+    </div>
+  );
+}
 
 export function Home() {
   return (
-    <div className="max-w-3xl space-y-12 text-sm leading-relaxed text-[#4f4a43]">
-      
+    <div className="max-w-3xl space-y-14 text-sm leading-relaxed text-[#4f4a43]">
+
       {/* Campus Banner Image */}
-      <div className="group relative overflow-hidden border border-[#d8d1c6] bg-[#e7e1d8]">
-        <img
-          src="https://thevarsity.ca/wp-content/uploads/2019/08/ROGUE_UTSC_9_to_9-SHANNA_HUNTERTHE_VARSITY-UTSC_front_campus-scaled.jpg"
-          alt="University of Toronto Scarborough Campus"
-          className="h-56 w-full object-cover brightness-[0.92] transition-transform duration-700 group-hover:scale-[1.02] sm:h-72"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-      </div>
+      <Section>
+        <div className="group banner-depth relative overflow-hidden rounded-lg border border-[#d8d1c6] bg-[#e7e1d8]">
+          <img
+            src="https://thevarsity.ca/wp-content/uploads/2019/08/ROGUE_UTSC_9_to_9-SHANNA_HUNTERTHE_VARSITY-UTSC_front_campus-scaled.jpg"
+            alt="University of Toronto Scarborough Campus"
+            className="h-56 w-full object-cover brightness-[0.92] transition-transform duration-700 group-hover:scale-[1.05] sm:h-72"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-x-full group-hover:translate-x-full" style={{transition: 'opacity 0.7s, transform 1.2s ease'}} />
+        </div>
+      </Section>
 
-      {/* Intro Line */}
-      <div className="space-y-3">
-        <p className="flex items-center gap-2 flex-wrap">
-          <span>computer science co-op stream @</span>
-          <a
-            href="https://www.utsc.utoronto.ca/cms/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-500 border border-blue-500/20 hover:bg-blue-500/20 transition-all duration-300 hover:scale-[1.02]"
-          >
-            <FaGraduationCap />
-            University of Toronto Scarborough
-          </a>
-          <span className="inline-flex items-center rounded-full bg-slate-200/80 dark:bg-slate-800/80 px-2.5 py-0.5 text-xs font-mono text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-slate-700">
-            2026 cohort
-          </span>
-        </p>
-      </div>
-
-     
+      {/* Intro */}
+      <Section delay={100}>
+        <div className="space-y-3">
+          <p className="flex items-center gap-2 flex-wrap text-[15px]">
+            <span>computer science co-op stream @</span>
+            <a
+              href="https://www.utsc.utoronto.ca/cms/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-500 border border-blue-500/20 hover:bg-blue-500/20 transition-all duration-300 hover:scale-[1.02] badge-glow"
+            >
+              <FaGraduationCap />
+              University of Toronto Scarborough
+            </a>
+            <span className="inline-flex items-center rounded-full bg-slate-200/80 px-2.5 py-0.5 text-xs font-mono text-slate-600 border border-slate-300">
+              2026 cohort
+            </span>
+          </p>
+        </div>
+      </Section>
 
       {/* What I've Done */}
-      <div className="">
-        <h2 className="mb-4 font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18]">
-          previously:
-        </h2>
-        <ul className="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-          <li>
-            won 1st place @{" "}
-            <a
+      <Section delay={200}>
+        <div>
+          <h2 className="mb-5 font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18] section-heading">
+            previously:
+          </h2>
+          <div className="space-y-3">
+            <AchievementCard
               href="https://www.utsc.utoronto.ca/mgmt/be-unlimited/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20 text-xs font-medium hover:bg-purple-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaTrophy /> UTSC BE-UNLIMITED Case Competition
-            </a>
-          </li>
-          <li>
-            12 million+ views creating formula one content @{" "}
-            <a
+              icon={<FaTrophy />}
+              title="Won 1st Place"
+              subtitle="UTSC BE-UNLIMITED Case Competition"
+              borderColor="hover:border-purple-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(168,85,247,0.08)]"
+              iconBg="bg-purple-500/10"
+              iconColor="text-purple-500"
+              arrowColor="text-purple-500"
+            />
+            <AchievementCard
               href="https://www.instagram.com/skewteria/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-500 border border-pink-500/20 text-xs font-medium hover:bg-pink-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaInstagram /> Instagram
-            </a>
-          </li>
-          <li>
-            ex-marketing intern @{" "}
-            <a
+              icon={<FaInstagram />}
+              title="12M+ Views on Formula One Content"
+              subtitle="Instagram · Content Creator"
+              borderColor="hover:border-pink-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(236,72,153,0.08)]"
+              iconBg="bg-pink-500/10"
+              iconColor="text-pink-500"
+              arrowColor="text-pink-500"
+            />
+            <AchievementCard
               href="https://sites.google.com/view/23e2/home"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-xs font-medium hover:bg-emerald-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaBriefcase /> 23e2 Digital
-            </a>
-          </li>
-          <li>
-            Leading to Reading Volunteer @{" "}
-            <a
+              icon={<FaBriefcase />}
+              title="Ex-Marketing Intern"
+              subtitle="23e2 Digital"
+              borderColor="hover:border-emerald-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(16,185,129,0.08)]"
+              iconBg="bg-emerald-500/10"
+              iconColor="text-emerald-500"
+              arrowColor="text-emerald-500"
+            />
+            <AchievementCard
               href="https://tpl.ca/support-us/volunteering/leading-to-reading/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-xs font-medium hover:bg-amber-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaBookReader /> Toronto Public Library
-            </a>{" "}
-            for 3+ years
-          </li>
-          <li>
-            completed coursework in CS50x, CS50P, and CS50AI @{" "}
-            <a
+              icon={<FaBookReader />}
+              title="Leading to Reading Volunteer"
+              subtitle="Toronto Public Library · 3+ years"
+              borderColor="hover:border-amber-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(245,158,11,0.08)]"
+              iconBg="bg-amber-500/10"
+              iconColor="text-amber-500"
+              arrowColor="text-amber-500"
+            />
+            <AchievementCard
               href="https://cs50.harvard.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-500 border border-red-500/20 text-xs font-medium hover:bg-red-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaCode /> Harvard CS50
-            </a>
-          </li>
-          <li>
-            finished{" "}
-            <a
+              icon={<FaCode />}
+              title="CS50x, CS50P, CS50AI"
+              subtitle="Harvard University · Coursework"
+              borderColor="hover:border-red-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(239,68,68,0.08)]"
+              iconBg="bg-red-500/10"
+              iconColor="text-red-500"
+              arrowColor="text-red-500"
+            />
+            <AchievementCard
               href="https://leetcode.com/studyplan/leetcode-75/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 text-xs font-medium hover:bg-yellow-500/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              <FaCode /> LeetCode
-            </a>{" "}
-            75
-          </li>
-          <li>
-            participated in various school clubs & received academic awards
-          </li>
-        </ul>
-      </div>
+              icon={<FaCode />}
+              title="LeetCode 75 Completed"
+              subtitle="Problem Solving"
+              borderColor="hover:border-yellow-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(234,179,8,0.08)]"
+              iconBg="bg-yellow-500/10"
+              iconColor="text-yellow-600"
+              arrowColor="text-yellow-600"
+            />
+            <AchievementCard
+              icon={<FaTrophy />}
+              title="School Clubs & Academic Awards"
+              subtitle="Various extracurriculars"
+              borderColor="hover:border-slate-400"
+              shadowColor="hover:shadow-[0_4px_20px_rgba(100,116,139,0.08)]"
+              iconBg="bg-slate-100"
+              iconColor="text-[#7c7469]"
+              arrowColor="text-slate-400"
+            />
+          </div>
+        </div>
+      </Section>
 
       {/* Personal / Outside Work */}
-      <div className="space-y-2">
-        <h2 className="font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18]">
-          other stuff:
-        </h2>
-        <ul className="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-          <li>9k trophies in clash royale</li>
-          <li>maxed out TH12 in clash of clans</li>
-          <li>150 lb bench press</li>
-        </ul>
-      </div>
-
-      {/* HIGH-CONTRAST BASH TERMINAL CTA */}
-      <div className="pt-4">
-        <div className="p-5 rounded-xl bg-slate-950 border-2 border-cyan-500/60 shadow-[0_0_20px_rgba(6,182,212,0.15)] font-mono text-sm relative overflow-hidden group">
-          
-          {/* Subtle Top Glow */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-70" />
-
-          {/* Window Header Controls */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-3 mb-4">
-            <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+      <Section delay={250}>
+        <div>
+          <h2 className="mb-5 font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18] section-heading">
+            other stuff:
+          </h2>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 grid-stagger">
+            <div className="flex items-center gap-3 personal-card rounded-xl border border-[#d8d1c6] bg-[#faf8f4] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-400">
+              <FaGamepad className="shrink-0 text-lg text-orange-500" />
+              <div>
+                <p className="text-sm font-medium text-[#1b1a18]">9K Trophies</p>
+                <p className="text-xs text-[#7c7469]">Clash Royale</p>
+              </div>
             </div>
-            <span className="text-[11px] text-cyan-400/80 font-bold tracking-wider flex items-center gap-1.5">
-              <FaTerminal className="text-[10px]" /> bash ~ portfolio
-            </span>
-          </div>
-
-          {/* Command Prompt and Button Container */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
-            <div className="flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">$</span>
-              <span className="text-cyan-300 font-semibold">./explore_projects.sh</span>
-              <span className="inline-block w-2 h-4 bg-cyan-400 animate-pulse ml-0.5" />
+            <div className="flex items-center gap-3 personal-card rounded-xl border border-[#d8d1c6] bg-[#faf8f4] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-green-400">
+              <FaGamepad className="shrink-0 text-lg text-green-600" />
+              <div>
+                <p className="text-sm font-medium text-[#1b1a18]">Maxed TH12</p>
+                <p className="text-xs text-[#7c7469]">Clash of Clans</p>
+              </div>
             </div>
-
-            <Link
-              to="/projects"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm transition-all duration-200 hover:scale-105 shadow-md shadow-cyan-500/20"
-            >
-              <span>View Projects</span>
-              <FaArrowRight className="text-xs transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
+            <div className="flex items-center gap-3 personal-card rounded-xl border border-[#d8d1c6] bg-[#faf8f4] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-rose-400">
+              <FaDumbbell className="shrink-0 text-lg text-rose-500" />
+              <div>
+                <p className="text-sm font-medium text-[#1b1a18]">150 LB Bench</p>
+                <p className="text-xs text-[#7c7469]">Personal Best</p>
+              </div>
+            </div>
           </div>
-
         </div>
-      </div>
+      </Section>
+
+
 
     </div>
   );
