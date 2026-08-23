@@ -12,34 +12,33 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/50 backdrop-blur-sm transition-colors py-6 mt-8">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-mono text-slate-500 dark:text-slate-400">
+    <footer className="mt-8 w-full border-t border-[#d8d1c6] py-6">
+      <div className="flex flex-col items-center justify-between gap-4 text-xs text-[#7c7469] sm:flex-row sm:text-sm">
         
         {/* Left: Branding Badge */}
         <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />
-          <span>Built without Claude</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em]">Ryan Wu / 2026</span>
         </div>
 
         {/* Right: Interactive Email Container */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span className="text-slate-400 dark:text-slate-500">email:</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em]">Get in touch</span>
           
-          <div className="inline-flex items-center gap-2 rounded-md bg-slate-200/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-800 dark:text-slate-200 border border-slate-300/50 dark:border-slate-700/50 transition-colors">
+          <div className="inline-flex items-center gap-2 text-[#1b1a18]">
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-1.5 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-[#b64b32] transition-colors"
               title="Send email"
             >
               <FaEnvelope className="text-xs text-slate-400 dark:text-slate-500" />
               <span>{email}</span>
             </a>
 
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-[#d8d1c6]">/</span>
 
             <button
               onClick={handleCopy}
-              className="p-1 hover:text-blue-500 dark:hover:text-blue-400 transition-colors cursor-pointer"
+              className="p-1 transition-colors hover:text-[#b64b32]"
               aria-label="Copy email address"
               title="Copy to clipboard"
             >

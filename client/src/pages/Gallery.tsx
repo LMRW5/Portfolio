@@ -134,15 +134,15 @@ const galleryItems: GalleryItem[] = [
 
 export function Gallery() {
   return (
-    <main className="max-w-6xl mx-auto">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Gallery</h1>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          things ive done over the years
+    <main className="max-w-6xl">
+      <div className="border-b border-[#d8d1c6] pb-6">
+        <h1 className="font-['Space_Grotesk'] text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Gallery</h1>
+        <p className="mt-2 max-w-xl text-sm text-[#7c7469]">
+          things i've done over the years.
         </p>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-8">
         <GalleryArchitecture items={galleryItems} />
       </div>
     </main>

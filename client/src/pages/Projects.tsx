@@ -221,16 +221,16 @@ Core Features & Technical Architecture:
 
 export function Projects() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Projects</h1>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          cool stuff i've developed and co-developed
+    <div className="space-y-8">
+      <div className="pb-6">
+        <h1 className="font-['Space_Grotesk'] text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Projects</h1>
+        <p className="mt-2 max-w-xl text-sm text-[#7c7469]">
+          cool things i developed and co-developed.
         </p>
       </div>
 
       {/* 2-column grid layout */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {projectsData.map((project) => (
           <ProjectCard key={project.id} project={project as ProjectData} />
         ))}

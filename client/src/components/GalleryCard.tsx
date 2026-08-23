@@ -34,25 +34,25 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({ item, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="group relative cursor-pointer rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 transition-all hover:scale-[1.02] hover:border-neutral-700"
+      className="group relative cursor-pointer overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] transition-all hover:-translate-y-1 hover:border-[#b64b32] hover:shadow-[6px_6px_0_#d8d1c6]"
     >
-      <div className="aspect-[4/3] w-full overflow-hidden bg-neutral-950">
+      <div className="aspect-[4/3] w-full overflow-hidden bg-[#e7e1d8]">
         <img
           src={item.coverImage}
           alt={item.title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-4">
-        <div className="flex justify-between items-center text-xs text-neutral-400 mb-1">
+      <div className="p-5">
+        <div className="mb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-wide text-[#7c7469]">
           <span>{item.category}</span>
           <span>{item.date}</span>
         </div>
-        <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+        <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-colors group-hover:text-[#b64b32]">
           {item.title}
         </h3>
         {item.photos.length > 1 && (
-          <div className="mt-2 flex items-center gap-1 text-xs text-neutral-400">
+          <div className="mt-3 flex items-center gap-1 text-xs text-[#7c7469]">
             <Images size={14} />
             <span>{item.photos.length} photos</span>
           </div>
@@ -127,17 +127,17 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
     <>
       {/* Standard Modal View */}
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm"
         onClick={onClose}
       >
         <div
-          className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-neutral-900 border border-neutral-800 p-6 shadow-2xl text-white"
+          className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto border border-[#d8d1c6] bg-[#faf8f4] p-6 text-[#1b1a18] shadow-[8px_8px_0_#d8d1c6]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-white rounded-full hover:bg-neutral-800 transition-colors z-10"
+            className="absolute right-4 top-4 z-10 rounded-full p-2 text-[#7c7469] transition-colors hover:bg-[#e7e1d8] hover:text-[#1b1a18]"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -145,23 +145,23 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
 
           {/* Modal Header */}
           <div className="mb-4 pr-8">
-            <div className="flex justify-between items-center text-xs text-neutral-400 uppercase tracking-wider mb-1">
+            <div className="mb-1 flex items-center justify-between text-xs uppercase tracking-wider text-[#7c7469]">
               <span>{item.category}</span>
               <span>{item.date}</span>
             </div>
-            <h2 className="text-2xl font-bold text-white">{item.title}</h2>
+            <h2 className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight text-[#1b1a18]">{item.title}</h2>
             {item.description && (
-              <p className="text-sm text-neutral-300 mt-2">{item.description}</p>
+              <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-[#4f4a43]">{item.description}</p>
             )}
           </div>
 
           {/* Media Viewer Frame */}
-<div className="relative group rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center min-h-[280px]">
+<div className="group relative flex min-h-[280px] items-center justify-center border border-[#d8d1c6] bg-[#e7e1d8]">
   <img
     src={currentMedia.url}
     alt={currentMedia.alt || item.title}
     onClick={() => setIsExpanded(true)}
-    className="w-full h-auto max-h-[50vh] object-contain mx-auto cursor-pointer rounded-xl"
+    className="mx-auto h-auto max-h-[50vh] w-full cursor-pointer object-contain"
   />
 
   {/* Explicit Enlarge Button */}
@@ -170,7 +170,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
       e.stopPropagation();
       setIsExpanded(true);
     }}
-    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-white text-xs font-medium backdrop-blur-md border border-neutral-700 transition-all shadow-lg"
+    className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 border border-[#7c7469] bg-[#1b1a18]/85 px-3 py-1.5 text-xs font-medium text-[#f4f1eb] shadow-lg transition-all hover:bg-[#b64b32]"
     title="Click to enlarge image"
   >
     <Maximize2 size={14} />
@@ -182,14 +182,14 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
     <>
       <button
         onClick={handlePrev}
-        className="absolute left-3 z-20 p-2 rounded-full bg-black/70 text-white hover:bg-black/90 backdrop-blur-sm transition-colors border border-neutral-800"
+        className="absolute left-3 z-20 rounded-full border border-[#7c7469] bg-[#4f4a43] p-2 text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
         aria-label="Previous photo"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-3 z-20 p-2 rounded-full bg-black/70 text-white hover:bg-black/90 backdrop-blur-sm transition-colors border border-neutral-800"
+        className="absolute right-3 z-20 rounded-full border border-[#7c7469] bg-[#4f4a43] p-2 text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
         aria-label="Next photo"
       >
         <ChevronRight size={20} />
@@ -201,7 +201,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
           {/* Caption & Counter */}
           <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             {currentMedia.caption ? (
-              <p className="text-sm text-neutral-400 italic">
+              <p className="text-sm italic text-[#7c7469]">
                 {currentMedia.caption}
               </p>
             ) : (
@@ -209,7 +209,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
             )}
 
             {hasMultipleMedia && (
-              <span className="text-xs font-medium text-neutral-500 self-end sm:self-center">
+              <span className="self-end text-xs font-medium text-[#7c7469] sm:self-center">
                 {currentIndex + 1} / {item.photos.length}
               </span>
             )}
@@ -217,12 +217,12 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
 
           {/* Link Section */}
           {(currentMedia.link || item.link) && (
-            <div className="mt-6 pt-4 border-t border-neutral-800 flex justify-end">
+            <div className="mt-6 flex justify-end border-t border-[#d8d1c6] pt-4">
               <a
                 href={(currentMedia.link || item.link)?.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#b64b32] hover:underline"
               >
                 {(currentMedia.link || item.link)?.label || "View Details"}
                 <ExternalLink size={16} />
@@ -235,7 +235,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
       {/* Fullscreen Expanded View Overlay */}
       {isExpanded && (
         <div
-          className="fixed inset-0 z-[60] bg-black/95 flex flex-col justify-between p-4 sm:p-8 backdrop-blur-md"
+          className="fixed inset-0 z-[60] flex flex-col justify-between bg-[#1b1a18]/95 p-4 backdrop-blur-md sm:p-8"
           onClick={() => setIsExpanded(false)}
         >
           {/* Top Bar Controls */}
@@ -243,12 +243,12 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
             className="flex items-center justify-between w-full max-w-6xl mx-auto z-10"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-white font-medium text-sm truncate max-w-[70%]">
+            <div className="max-w-[70%] truncate text-sm font-medium text-[#f4f1eb]">
               {item.title} {hasMultipleMedia && `(${currentIndex + 1}/${item.photos.length})`}
             </div>
             <button
               onClick={() => setIsExpanded(false)}
-              className="p-2 text-neutral-400 hover:text-white bg-neutral-900/80 hover:bg-neutral-800 rounded-full transition-colors"
+              className="rounded-full bg-[#4f4a43] p-2 text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
               aria-label="Exit enlarged view"
             >
               <Minimize2 size={20} />
@@ -271,14 +271,14 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               <>
                 <button
                   onClick={handlePrev}
-                  className="absolute left-2 sm:left-4 p-3 rounded-full bg-neutral-900/80 text-white hover:bg-neutral-800 backdrop-blur-sm transition-colors border border-neutral-700"
+                  className="absolute left-2 rounded-full border border-[#7c7469] bg-[#4f4a43] p-3 text-[#f4f1eb] transition-colors hover:bg-[#b64b32] sm:left-4"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute right-2 sm:right-4 p-3 rounded-full bg-neutral-900/80 text-white hover:bg-neutral-800 backdrop-blur-sm transition-colors border border-neutral-700"
+                  className="absolute right-2 rounded-full border border-[#7c7469] bg-[#4f4a43] p-3 text-[#f4f1eb] transition-colors hover:bg-[#b64b32] sm:right-4"
                   aria-label="Next photo"
                 >
                   <ChevronRight size={24} />
@@ -289,10 +289,10 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
 
           {/* Bottom Caption Container */}
           <div
-            className="w-full max-w-3xl mx-auto bg-neutral-900/90 border border-neutral-800 rounded-xl p-4 text-center backdrop-blur-sm z-10"
+            className="z-10 mx-auto w-full max-w-3xl border border-[#7c7469] bg-[#4f4a43] p-4 text-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <p className="text-sm text-neutral-200">
+            <p className="text-sm text-[#f4f1eb]">
               {currentMedia.caption || item.description || item.title}
             </p>
           </div>

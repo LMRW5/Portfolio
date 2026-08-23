@@ -45,7 +45,7 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
       />
 
       {/* Modal Card */}
-      <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900 animate-scale-up">
+      <div className="relative w-full max-w-md border border-[#d8d1c6] bg-[#faf8f4] p-6 shadow-[8px_8px_0_#d8d1c6] animate-scale-up">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -55,9 +55,9 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
           ✕
         </button>
 
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Get in Touch</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          Have a project in mind or want to talk tech? Drop a message!
+          <h2 className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight text-[#1b1a18]">Get in touch</h2>
+        <p className="mt-2 text-sm text-[#7c7469]">
+          Have a project in mind? Send me a note.
         </p>
 
         {submitted ? (
@@ -73,7 +73,7 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-sm text-slate-900 focus:border-blue-600 focus:outline-none dark:border-slate-800 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full border border-[#d8d1c6] bg-[#f4f1eb] p-2.5 text-sm text-[#1b1a18] outline-none focus:border-[#b64b32]"
                 placeholder="Your Name"
               />
             </div>
@@ -85,7 +85,7 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-sm text-slate-900 focus:border-blue-600 focus:outline-none dark:border-slate-800 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full border border-[#d8d1c6] bg-[#f4f1eb] p-2.5 text-sm text-[#1b1a18] outline-none focus:border-[#b64b32]"
                 placeholder="you@example.com"
               />
             </div>
@@ -97,7 +97,7 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-sm text-slate-900 focus:border-blue-600 focus:outline-none dark:border-slate-800 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full border border-[#d8d1c6] bg-[#f4f1eb] p-2.5 text-sm text-[#1b1a18] outline-none focus:border-[#b64b32]"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -105,7 +105,7 @@ export default function Contact({ isOpen, onClose }: ContactModalProps) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 w-full rounded-lg bg-blue-600 py-2.5 font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+              className="mt-2 w-full bg-[#1b1a18] py-2.5 font-medium text-[#f4f1eb] transition-colors hover:bg-[#b64b32] disabled:opacity-50"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

@@ -12,14 +12,14 @@ import {
 
 export function Home() {
   return (
-    <div className="space-y-8 text-slate-800 dark:text-slate-200 max-w-3xl text-sm leading-relaxed">
+    <div className="max-w-3xl space-y-12 text-sm leading-relaxed text-[#4f4a43]">
       
       {/* Campus Banner Image */}
-      <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 group shadow-lg">
+      <div className="group relative overflow-hidden border border-[#d8d1c6] bg-[#e7e1d8]">
         <img
           src="https://thevarsity.ca/wp-content/uploads/2019/08/ROGUE_UTSC_9_to_9-SHANNA_HUNTERTHE_VARSITY-UTSC_front_campus-scaled.jpg"
           alt="University of Toronto Scarborough Campus"
-          className="w-full h-56 sm:h-64 object-cover group-hover:scale-[1.02] transition-transform duration-700 filter brightness-95"
+          className="h-56 w-full object-cover brightness-[0.92] transition-transform duration-700 group-hover:scale-[1.02] sm:h-72"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
       </div>
@@ -47,7 +47,7 @@ export function Home() {
 
       {/* What I've Done */}
       <div className="">
-        <h2 className="font-semibold text-slate-900 dark:text-white">
+        <h2 className="mb-4 font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18]">
           previously:
         </h2>
         <ul className="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -127,7 +127,7 @@ export function Home() {
 
       {/* Personal / Outside Work */}
       <div className="space-y-2">
-        <h2 className="font-semibold text-slate-900 dark:text-white">
+        <h2 className="font-['Space_Grotesk'] text-2xl font-semibold tracking-tight text-[#1b1a18]">
           other stuff:
         </h2>
         <ul className="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">

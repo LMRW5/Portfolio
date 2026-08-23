@@ -47,7 +47,7 @@ interface ProjectCardProps {
 
 // Helper functions for YouTube processing
 function getYouTubeEmbedUrl(url: string): string | null {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11
     ? `https://www.youtube.com/embed/${match[2]}?autoplay=1`
@@ -55,7 +55,7 @@ function getYouTubeEmbedUrl(url: string): string | null {
 }
 
 function getYouTubeThumbnail(url: string): string | null {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11
     ? `https://img.youtube.com/vi/${match[2]}/hqdefault.jpg`
@@ -125,31 +125,31 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {/* Rectangular Card Container */}
       <div
         onClick={() => setIsOpen(true)}
-        className="group relative flex flex-col overflow-hidden rounded-xl bg-slate-200/50 dark:bg-slate-800/40 border border-slate-300/60 dark:border-slate-700/60 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10"
+        className="group relative flex flex-col overflow-hidden border border-[#d8d1c6] bg-[#faf8f4] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-[#b64b32] hover:shadow-[6px_6px_0_#d8d1c6]"
       >
-        <div className="relative h-44 w-full overflow-hidden bg-slate-900/10 dark:bg-slate-950/40">
+        <div className="relative h-48 w-full overflow-hidden bg-[#e7e1d8]">
           <img
             src={project.image}
             alt={project.title}
             className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-[#1b1a18]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
 
         <div className="flex flex-1 flex-col justify-between p-4">
           <div>
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white transition-colors duration-200 group-hover:text-blue-500">
+              <h3 className="font-['Space_Grotesk'] text-lg font-semibold tracking-tight text-[#1b1a18] transition-colors duration-200 group-hover:text-[#b64b32]">
                 {project.title}
               </h3>
               {project.date && (
-                <span className="shrink-0 flex items-center gap-1 text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                  <FaCalendarAlt className="text-[10px] text-slate-400" />
+                <span className="flex shrink-0 items-center gap-1 font-mono text-[10px] uppercase tracking-wide text-[#7c7469]">
+                  <FaCalendarAlt className="text-[10px] text-[#b64b32]" />
                   {project.date}
                 </span>
               )}
             </div>
-            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#7c7469]">
               {project.shortDescription}
             </p>
           </div>
@@ -158,7 +158,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-blue-500/10 px-2 py-0.5 text-[11px] font-mono font-medium text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                className="border-b border-[#d8a08f] pb-0.5 font-mono text-[10px] uppercase tracking-wide text-[#b64b32]"
               >
                 {tag}
               </span>
@@ -171,15 +171,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {isOpen && (
         <div
           onClick={handleDismiss}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1b1a18]/55 p-4 backdrop-blur-sm animate-in fade-in duration-200"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-2xl text-slate-900 dark:text-slate-100"
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto border border-[#d8d1c6] bg-[#faf8f4] p-6 text-[#1b1a18] shadow-[8px_8px_0_#d8d1c6]"
           >
             <button
               onClick={handleDismiss}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="absolute right-4 top-4 z-10 rounded-full p-2 text-[#7c7469] transition-colors hover:bg-[#e7e1d8] hover:text-[#1b1a18]"
             >
               <FaTimes className="text-base" />
             </button>
@@ -187,8 +187,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h2 className="text-2xl font-bold tracking-tight">{project.title}</h2>
               {project.date && (
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-500 dark:text-slate-400">
-                  <FaCalendarAlt className="text-slate-400" />
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-[#7c7469]">
+                  <FaCalendarAlt className="text-[#b64b32]" />
                   {project.date}
                 </span>
               )}
@@ -196,8 +196,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
             {/* Teammates / Collaborators Section */}
             {project.teammates && project.teammates.length > 0 && (
-              <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                <FaUserFriends className="text-slate-400 dark:text-slate-500 shrink-0" />
+              <div className="mt-2 flex items-center gap-2 text-xs text-[#7c7469]">
+                <FaUserFriends className="shrink-0 text-[#b64b32]" />
                 <span className="font-medium">Built with:</span>
                 <div className="flex flex-wrap items-center gap-1.5">
                   {project.teammates.map((member, index) => (
@@ -207,13 +207,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
                           href={member.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-medium text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+                          className="inline-flex items-center gap-1 font-medium text-[#b64b32] hover:underline"
                         >
                           {member.name}
                           <FaExternalLinkAlt className="text-[9px] opacity-70" />
                         </a>
                       ) : (
-                        <span className="font-medium text-slate-700 dark:text-slate-300">
+                        <span className="font-medium text-[#4f4a43]">
                           {member.name}
                         </span>
                       )}
@@ -227,24 +227,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {/* Clickable Main Cover Image */}
             <div
               onClick={() => setSelectedIndex(0)}
-              className="group relative mt-4 h-64 w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 cursor-pointer"
+              className="group relative mt-4 h-64 w-full cursor-pointer overflow-hidden border border-[#d8d1c6] bg-[#e7e1d8]"
             >
               <img
                 src={project.image}
                 alt={project.title}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white text-xs font-medium">
+              <div className="absolute inset-0 flex items-center justify-center gap-2 bg-[#1b1a18]/35 text-xs font-medium text-[#faf8f4] opacity-0 transition-opacity group-hover:opacity-100">
                 <FaExpand /> Click to expand
               </div>
             </div>
 
             {/* Project Description */}
             <div className="mt-5 space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[#b64b32]">
                 About the Project
               </h4>
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-[#4f4a43]">
                 {project.fullDescription}
               </p>
             </div>
@@ -267,16 +267,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
                       <div
                         key={index}
                         onClick={() => setSelectedIndex(globalIndex)}
-                        className="group relative h-32 w-full overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-950/20 cursor-pointer"
+                        className="group relative h-32 w-full cursor-pointer overflow-hidden border border-[#d8d1c6] bg-[#e7e1d8]"
                       >
                         <img
                           src={thumbUrl}
                           alt={item.title || `${project.title} media ${index + 1}`}
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-2 text-center text-white text-xs font-medium gap-1">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[#1b1a18]/45 p-2 text-center text-xs font-medium text-[#faf8f4] opacity-0 transition-opacity group-hover:opacity-100">
                           {item.type === "video" ? (
-                            <FaPlay className="text-lg text-blue-400" />
+                            <FaPlay className="text-lg text-[#d8a08f]" />
                           ) : (
                             <FaExpand />
                           )}
@@ -292,12 +292,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
 
             {/* Footer Links & Tags */}
-            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[#d8d1c6] pt-4">
               <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-md bg-blue-500/10 px-2 py-0.5 text-xs font-mono font-medium text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                    className="border-b border-[#d8a08f] pb-0.5 font-mono text-[10px] uppercase tracking-wide text-[#b64b32]"
                   >
                     {tag}
                   </span>
@@ -310,7 +310,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-xs font-medium hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 border border-[#d8d1c6] bg-[#e7e1d8] px-3 py-1.5 text-xs font-medium transition-colors hover:bg-[#d8d1c6]"
                   >
                     <FaGithub className="text-sm" /> GitHub
                   </a>
@@ -320,9 +320,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.devpostUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20 text-xs font-medium hover:bg-teal-500/20 transition-colors"
+                    className="inline-flex items-center gap-1.5 border border-[#d8a08f] px-3 py-1.5 text-xs font-medium text-[#b64b32] transition-colors hover:bg-[#f0ddd5]"
                   >
-                    <SiDevpost className="text-sm text-teal-600 dark:text-teal-400" /> Devpost
+                    <SiDevpost className="text-sm" /> Devpost
                   </a>
                 )}
                 {project.liveUrl && (
@@ -330,7 +330,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-500 transition-colors"
+                    className="inline-flex items-center gap-1.5 bg-[#1b1a18] px-3 py-1.5 text-xs font-medium text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
                   >
                     <FaExternalLinkAlt className="text-[10px]" /> Live Demo
                   </a>
@@ -345,11 +345,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {currentMedia && selectedIndex !== null && (
         <div
           onClick={() => setSelectedIndex(null)}
-          className="fixed inset-0 z-[60] flex flex-col items-center justify-between p-6 bg-slate-950/90 backdrop-blur-md animate-in fade-in duration-150"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-between bg-[#1b1a18]/95 p-6 backdrop-blur-md animate-in fade-in duration-150"
         >
           <button
             onClick={() => setSelectedIndex(null)}
-            className="absolute top-4 right-4 z-10 p-3 rounded-full text-white bg-slate-800/80 hover:bg-slate-700 transition-colors"
+            className="absolute right-4 top-4 z-10 rounded-full bg-[#4f4a43] p-3 text-[#f4f1eb] transition-colors hover:bg-[#b64b32]"
           >
             <FaTimes className="text-lg" />
           </button>
@@ -363,7 +363,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {allMedia.length > 1 && (
               <button
                 onClick={handlePrev}
-                className="absolute -left-4 md:-left-12 z-20 p-3 rounded-full text-white bg-slate-800/80 hover:bg-slate-700 border border-slate-700/50 shadow-lg transition-transform hover:scale-110"
+                className="absolute -left-4 z-20 rounded-full border border-[#7c7469] bg-[#4f4a43] p-3 text-[#f4f1eb] shadow-lg transition-transform hover:scale-110 hover:bg-[#b64b32] md:-left-12"
                 aria-label="Previous image"
               >
                 <FaChevronLeft className="text-base" />
@@ -401,7 +401,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {allMedia.length > 1 && (
               <button
                 onClick={handleNext}
-                className="absolute -right-4 md:-right-12 z-20 p-3 rounded-full text-white bg-slate-800/80 hover:bg-slate-700 border border-slate-700/50 shadow-lg transition-transform hover:scale-110"
+                className="absolute -right-4 z-20 rounded-full border border-[#7c7469] bg-[#4f4a43] p-3 text-[#f4f1eb] shadow-lg transition-transform hover:scale-110 hover:bg-[#b64b32] md:-right-12"
                 aria-label="Next image"
               >
                 <FaChevronRight className="text-base" />
@@ -412,10 +412,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {/* Bottom Bar: Navigation Controls & Description */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="mt-4 flex flex-col items-center gap-2 max-w-lg w-full"
+            className="mt-4 flex w-full max-w-lg flex-col items-center gap-2"
           >
             {allMedia.length > 1 && (
-              <div className="flex items-center gap-4 bg-slate-900/90 border border-slate-800 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm text-xs text-slate-300">
+              <div className="flex items-center gap-4 border border-[#7c7469] bg-[#4f4a43] px-4 py-1.5 text-xs text-[#f4f1eb] shadow-lg">
                 <button
                   onClick={handlePrev}
                   className="p-1 hover:text-white transition-colors"
@@ -435,7 +435,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
 
             {currentMedia.title && (
-              <div className="px-4 py-2 rounded-lg bg-slate-900/80 border border-slate-800 text-center text-xs font-medium text-slate-300 shadow-lg backdrop-blur-sm w-full">
+              <div className="w-full border border-[#7c7469] bg-[#4f4a43] px-4 py-2 text-center text-xs font-medium text-[#f4f1eb] shadow-lg">
                 {currentMedia.title}
               </div>
             )}
