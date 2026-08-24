@@ -14,13 +14,101 @@ export interface ExtendedProjectData extends ProjectData {
 
 const projectsData: ExtendedProjectData[] = [
   {
+    id: "scaleup",
+    title: "ScaleUp",
+    shortDescription:
+      "Gamified AI music tutor that treats instrument learning like an RPG skill tree using Web Audio API note matching and local posture feedback via MediaPipe.",
+    fullDescription: `Submission for Ignition Hacks. \n\nScaleUp is an AI tutor that listens while you play, analyzes your posture, and teaches you in real-time through RPG-style skill trees generated dynamically.
+
+Core Features & Mechanics:
+• RPG Skill Trees & Shared Catalog: Choose from instruments (piano, guitar, violin, trumpet, drums, banjo) and unlock nodes. A shared skill catalogue auto-completes overlapping skills so you never re-learn what you know.
+• Dynamic Curriculum Generation: Describe any new instrument in plain English and Gemini generates a valid curriculum graph without circular dependencies.
+• Real-Time Audio & Pitch Analysis: Web Audio API detects pitch and notes in real time, scoring performance against the score using Dynamic Time Warping (DTW).
+• Local Vision Posture Tracking: MediaPipe extracts 33 body pose and 21 hand landmarks directly in-browser to grade posture across 16 rules without transmitting raw video to the cloud.
+• Contextual AI Voice Coaching: A WebSocket session streams real-time voice feedback (via Gemini Live API) that intelligently waits for musical phrase boundaries and only interrupts when performance strays.
+• Spaced Repetition Practice: Uses an SM-2 spaced repetition algorithm to track technique decay and surface targeted daily practice quests.
+
+Tech Stack & Architecture:
+• Frontend: Next.js 15, React 19, Tailwind CSS, @xyflow/react (interactive trees), Three.js, MediaPipe, Web Audio API.
+• Backend & AI: FastAPI, Python 3.12, PostgreSQL with pgvector, Redis, Celery, Neo4j (graph traversal), Chroma (vector search), Gemini 2.0 Flash, Gemini Live API.
+
+Key Engineering Challenges:
+• Developing an online note matcher using DTW for live coaching rather than post-performance scoring.
+• Designing non-intrusive AI voice feedback that respects phrasing and doesn't interrupt flow.
+• Creating landmark visibility checks and body-relative measurements in MediaPipe to eliminate posture false positives.`,
+    image:
+      "https://snipboard.io/Yz4kjW.jpg", // Update thumbnail image as needed
+    date: "August 2026",
+    tags: [
+      "Next.js",
+      "React",
+      "Python",
+      "FastAPI",
+      "MediaPipe",
+      "Web Audio API",
+      "Gemini API",
+      "Neo4j",
+      "PostgreSQL",
+    ],
+    teammates: [
+      { name: "Saivenkat Jilla", url: "https://www.linkedin.com/in/saivenkat-jilla/" },
+      { name: "Nathan Chu", url: "https://www.linkedin.com/in/nc101/" },
+      { name: "Arsia Khorramijam", url: "https://www.linkedin.com/in/arsia-khorramijam/" },
+    ],
+     media: [
+      {
+        type: "video",
+        url: "https://www.youtube.com/watch?v=pG5L6LhzR7Y&t=1s",
+        title: "Demo Video",
+      },
+         
+      {
+        type: "image",
+        url: "https://snipboard.io/UtNXBA.jpg",
+        title: "Choose Course",
+      },
+          {
+        type: "image",
+        url: "https://snipboard.io/sS3DJN.jpg",
+        title: "Course Outline",
+      },
+       {
+        type: "image",
+        url: "https://snipboard.io/E4yg1t.jpg",
+        title: "3d POV view",
+      },
+       {
+        type: "image",
+        url: "https://snipboard.io/ThG05O.jpg",
+        title: "Lesson Practice",
+      },
+       {
+        type: "image",
+        url: "https://snipboard.io/9mKcPG.jpg",
+        title: "Lesson Outline",
+      },
+       {
+        type: "image",
+        url: "https://snipboard.io/sUOnJ3.jpg",
+        title: "Quartz Sprites - Courtesy of Saivenkat's Sister",
+      },
+      {
+        type: "video",
+        url: "https://youtu.be/NuzWK6j_3DI",
+        title: "Graph Traversal Used in Skill Tree Generation",
+      },
+    ],
+    githubUrl: "https://github.com/sai3000pro/ScaleUp",
+    devpostUrl: "https://hack-hub-base44.base44.app/SubmissionDetail?id=6a8a1cf85e13061b23621386", // Update Devpost URL if available
+  },
+  {
     id: "sketchime",
     title: "Sketchime - 🏆 Centennial Hacks Winner",
     shortDescription:
       "Accessible digital storytelling tool that turns two hand-drawn keyframe sketches into smooth, continuous AI-animated video clips.",
     fullDescription: ` Won first place at Centennial Hacks 2026 and MLH Best Use of Gemini API Award.  
   
-  Sketchime is an accessible digital storytelling platform that transforms hand-drawn keyframes into smooth, continuous animated sequences without requiring advanced animation skills or expensive software.
+Sketchime is an accessible digital storytelling platform that transforms hand-drawn keyframes into smooth, continuous animated sequences without requiring advanced animation skills or expensive software.
 
 Core Features & Mechanics:
 • Hand-Drawn Keyframe Interpolation: Users draw a starting and ending image on a custom digital canvas with onion-skinning support to define motion endpoints.
@@ -36,7 +124,7 @@ Key Engineering Challenges:
 • Preserving original stroke styles, line weights, and character proportions across raw 2D sketch keyframe transformations.
 • Managing client-side canvas state continuity, onion-skinning, and real-time frame syncing across multi-clip timelines.
 • Fine-tuning multi-agent Gemini system prompts to extract precise motion dynamics without burdening the user.`,
-    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/111/601/datas/gallery.jpg", // Replace with your main image/thumbnail URL
+    image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/111/601/datas/gallery.jpg",
     teammates: [
       { name: "Eric Chen", url: "https://ericzxchen.com/" },
       { name: "Andrew Miller", url: "https://devpost.com/AndrewMiller22" },
@@ -47,19 +135,18 @@ Key Engineering Challenges:
         url: "https://www.youtube.com/watch?v=ACJfFWRHw_g",
         title: "Demo Video",
       },
-
     ],
     date: "August 2026",
     tags: ["Next.js", "React", "TypeScript", "Gemini API", "Google Veo", "HTML5 Canvas"],
-    githubUrl: "https://github.com/ericchen356/sketchime", // Replace with your repo link
-    devpostUrl: "https://devpost.com/software/sketchime",   // Replace with your Devpost link
+    githubUrl: "https://github.com/ericchen356/sketchime",
+    devpostUrl: "https://devpost.com/software/sketchime",
   },
   {
     id: "pitchify",
     title: "Pitchify",
     shortDescription:
       "AI-powered pitch training platform inspired by Shark Tank featuring multi-agent AI investors and computer vision delivery analysis.",
-    fullDescription: `Pitchify is an AI-powered pitch training platform inspired by Shark Tank that gives entrepreneurs and students a realistic environment to practice startup ideas, answer tough investor questions, and refine their presentation skills.
+    fullDescription: `Submission for Hack the Valley's Hack Day.\n\nPitchify is an AI-powered pitch training platform inspired by Shark Tank that gives entrepreneurs and students a realistic environment to practice startup ideas, answer tough investor questions, and refine their presentation skills.
 Core Features & Mechanics:
 • The Pitch & Q&A: Users have 3 minutes to present their idea to 4 distinct AI investor agents (financial, technical, logistical, strategic) who independently evaluate the pitch and ask targeted follow-up questions.
 • Multimodal Delivery Analysis: Beyond text evaluation, computer vision tracks physical posture, movement, tone, confidence, and vocal clarity to provide holistic performance feedback.
@@ -81,7 +168,6 @@ Key Engineering Challenges:
       { name: "Awsaf Syed", url: "https://www.awsaf.dev/" },
     ],
     date: "July 2026",
-
     media: [
       {
         type: "video",
@@ -170,23 +256,22 @@ Core Features & Highlights:
       }
     ]
   },
-{
-  "id": "cs50ai-degrees-bfs",
-  "title": "Six Degrees of Separation Finder",
-  "shortDescription": "A graph-search application utilizing Breadth-First Search (BFS) to discover the shortest path between Hollywood actors through shared movie credits.",
-  "fullDescription": "A data-driven graph navigation system developed for CS50AI (Harvard's Introduction to Artificial Intelligence with Python). The application solves the 'Six Degrees of Kevin Bacon' problem by mapping relationships between actors as a network graph, where actors are nodes and shared movie roles are the connecting edges. Using optimized search algorithms, the system instantly calculates the absolute shortest path of connection between any two individuals in a massive IMDb-sourced dataset.\n\nEngineering Highlights & Algorithmic Foundations:\n- Graph Search Implementation: Engineered a memory-efficient Breadth-First Search (BFS) algorithm to guarantee the discovery of the optimal, shortest connection path between nodes.\n- Advanced Data Structures: Utilized node wrappers, frontier queues, and explored sets to manage state distributions and completely eliminate infinite loop redundancies during traversal.\n- CSV Data Parsing: Processed large relational CSV datasets containing thousands of actor profiles and movie records, programmatically mapping them into fast-lookup Python dictionaries.\n- Performance Optimization: Designed the frontier management system to prioritize evaluation steps, minimizing RAM consumption and query execution latency even when processing deep connections.\n\nDue to the policy of the course, code will only be available upon request for academic integrity reasons.",
-  "image": "https://miro.medium.com/v2/1*6rJ2T1-LG0PXemMY85HMJw.png",
-  "date": "August 2024",
-  "tags": [
-    "Python",
-    "Graph Theory",
-    "Breadth-First Search",
-    "Algorithms",
-    "CS50AI"
-  ],
-  "media": [{ "type": "video", "title": "Demo Video", "url": "https://youtu.be/os6gsyaobyE" }]
-},
-
+  {
+    "id": "cs50ai-degrees-bfs",
+    "title": "Six Degrees of Separation Finder",
+    "shortDescription": "A graph-search application utilizing Breadth-First Search (BFS) to discover the shortest path between Hollywood actors through shared movie credits.",
+    "fullDescription": "A data-driven graph navigation system developed for CS50AI (Harvard's Introduction to Artificial Intelligence with Python). The application solves the 'Six Degrees of Kevin Bacon' problem by mapping relationships between actors as a network graph, where actors are nodes and shared movie roles are the connecting edges. Using optimized search algorithms, the system instantly calculates the absolute shortest path of connection between any two individuals in a massive IMDb-sourced dataset.\n\nEngineering Highlights & Algorithmic Foundations:\n- Graph Search Implementation: Engineered a memory-efficient Breadth-First Search (BFS) algorithm to guarantee the discovery of the optimal, shortest connection path between nodes.\n- Advanced Data Structures: Utilized node wrappers, frontier queues, and explored sets to manage state distributions and completely eliminate infinite loop redundancies during traversal.\n- CSV Data Parsing: Processed large relational CSV datasets containing thousands of actor profiles and movie records, programmatically mapping them into fast-lookup Python dictionaries.\n- Performance Optimization: Designed the frontier management system to prioritize evaluation steps, minimizing RAM consumption and query execution latency even when processing deep connections.\n\nDue to the policy of the course, code will only be available upon request for academic integrity reasons.",
+    "image": "https://miro.medium.com/v2/1*6rJ2T1-LG0PXemMY85HMJw.png",
+    "date": "August 2024",
+    "tags": [
+      "Python",
+      "Graph Theory",
+      "Breadth-First Search",
+      "Algorithms",
+      "CS50AI"
+    ],
+    "media": [{ "type": "video", "title": "Demo Video", "url": "https://youtu.be/os6gsyaobyE" }]
+  },
   {
     id: "cs50-blackjack",
     title: "Blackjack Web App",
@@ -198,7 +283,7 @@ Core Features & Technical Architecture:
 • Game Mechanics & Logic: Designed object-oriented modules (\`Deck\` and \`Hand\` classes) in Python to handle shuffling, card dealing, dynamic Ace valuation (1 or 11), and a randomized dealer AI strategy with hit/stand thresholds.
 • Session & Route Security: Implemented server-side session variables and custom POST-redirect patterns to protect active hands, prevent URL manipulation during live games, and maintain real-time chip counts.
 • Database & Financial History: Engineered relational SQLite tables (\`Users\` and \`History\`) to securely store hashed credentials, track win/loss payouts, and log timestamped balance changes.`,
-    image: "https://i.snipboard.io/tY4O9Z.jpg", // Update with your actual asset path
+    image: "https://i.snipboard.io/tY4O9Z.jpg",
     date: "May 2024",
     tags: [
       "Python",
@@ -209,7 +294,7 @@ Core Features & Technical Architecture:
       "Jinja2",
       "CS50X"
     ],
-    githubUrl: "https://github.com/LMRW5/Blackjack/tree/main/project", // Replace with specific repo URL if applicable
+    githubUrl: "https://github.com/LMRW5/Blackjack/tree/main/project",
     media: [
       {
         type: "video",

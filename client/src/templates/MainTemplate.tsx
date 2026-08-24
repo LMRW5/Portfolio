@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { AnimatedBackground } from "../components/AnimatedBackground";
@@ -22,7 +23,12 @@ export function MainTemplate() {
       {/* Main Content Area - Reduced top padding to sit right under navbar */}
       <main className="relative z-10 mx-auto w-full max-w-6xl flex-1 px-5 pt-2 sm:pt-3 pb-8 sm:px-8 lg:px-10">
         {/* Header Section */}
-        <div className="mb-6 flex flex-col justify-between gap-4 border-b border-[#d8d1c6] pb-4 sm:flex-row sm:items-end animate-fade-up">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 flex flex-col justify-between gap-4 border-b border-[#d8d1c6] pb-4 sm:flex-row sm:items-end"
+        >
           
           {/* Interactive Proximity-Based Name */}
           <div className="relative group cursor-pointer inline-block">
@@ -33,74 +39,61 @@ export function MainTemplate() {
               {name.split("").map((char, i) => {
                 const distance = hoverIndex !== null ? Math.abs(hoverIndex - i) : null;
 
-                let translateY = "translate-y-0";
-                let scale = "scale-100";
-                let rotate = "rotate-0";
+                let translateY = 0;
+                let scale = 1;
+                let rotate = 0;
 
                 if (distance === 0) {
-                  translateY = "-translate-y-3";
-                  scale = "scale-110";
-                  rotate = "-rotate-2";
+                  translateY = -12;
+                  scale = 1.1;
+                  rotate = -2;
                 } else if (distance === 1) {
-                  translateY = "-translate-y-1.5";
-                  scale = "scale-105";
-                  rotate = "rotate-1";
+                  translateY = -6;
+                  scale = 1.05;
+                  rotate = 1;
                 }
 
                 return (
-                  <span
+                  <motion.span
                     key={i}
                     onMouseEnter={() => setHoverIndex(i)}
-                    className={`inline-block transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${translateY} ${scale} ${rotate} ${
-                      char === " " ? "w-3 sm:w-4" : ""
-                    } hover:text-[#b64b32]`}
+                    animate={{ y: translateY, scale, rotate }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    className={`inline-block ${char === " " ? "w-3 sm:w-4" : ""} hover:text-[#b64b32]`}
                   >
                     {char}
-                  </span>
+                  </motion.span>
                 );
               })}
             </h1>
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-[#7c7469] pb-1 stagger-children">
-            <a
-              href="https://linkedin.com/in/ryan-wu88"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition-all duration-300 hover:text-[#b64b32] hover:translate-x-1"
-            >
-              <div className="flex items-center gap-2">
-                <FaLinkedin />
-                <span className="hover-underline">LinkedIn</span>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/LMRW5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition-all duration-300 hover:text-[#b64b32] hover:translate-x-1"
-            >
-              <div className="flex items-center gap-2">
-                <FaGithub />
-                <span className="hover-underline">GitHub</span>
-              </div>
-            </a>
-
-            <a
-              href="https://devpost.com/LMRW5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition-all duration-300 hover:text-[#b64b32] hover:translate-x-1"
-            >
-              <div className="flex items-center gap-2">
-                <SiDevpost />
-                <span className="hover-underline">Devpost</span>
-              </div>
-            </a>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-[#7c7469] pb-1">
+            {[
+              { href: "https://linkedin.com/in/ryan-wu88", icon: <FaLinkedin />, label: "LinkedIn" },
+              { href: "https://github.com/LMRW5", icon: <FaGithub />, label: "GitHub" },
+              { href: "https://devpost.com/LMRW5", icon: <SiDevpost />, label: "Devpost" },
+            ].map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+                whileHover={{ x: 4, color: "#b64b32" }}
+                className="inline-flex items-center gap-2"
+              >
+                <div className="flex items-center gap-2">
+                  {link.icon}
+                  <span className="hover-underline">{link.label}</span>
+                </div>
+              </motion.a>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Dynamic Route Content */}
         <div>
