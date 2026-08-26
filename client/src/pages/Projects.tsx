@@ -17,7 +17,7 @@ const projectsData: ExtendedProjectData[] = [
     id: "scaleup",
     title: "ScaleUp",
     shortDescription:
-      "Gamified AI music tutor that treats instrument learning like an RPG skill tree using Web Audio API note matching and local posture feedback via MediaPipe.",
+"Learn any instrument through dynamically generated RPG skill trees, real-time Web Audio pitch detection, and AI feedback.",
     fullDescription: `Submission for Ignition Hacks. \n\nScaleUp is an AI tutor that listens while you play, analyzes your posture, and teaches you in real-time through RPG-style skill trees generated dynamically.
 
 Core Features & Mechanics:
@@ -102,13 +102,13 @@ Key Engineering Challenges:
     devpostUrl: "https://hack-hub-base44.base44.app/SubmissionDetail?id=6a8a1cf85e13061b23621386", // Update Devpost URL if available
   },
   {
-    id: "sketchime",
-    title: "Sketchime - 🏆 Centennial Hacks Winner",
+    id: "Sketch Motion",
+    title: "Sketch Motion - 🏆 Centennial Hacks Winner",
     shortDescription:
       "Accessible digital storytelling tool that turns two hand-drawn keyframe sketches into smooth, continuous AI-animated video clips.",
     fullDescription: ` Won first place at Centennial Hacks 2026 and MLH Best Use of Gemini API Award.  
   
-Sketchime is an accessible digital storytelling platform that transforms hand-drawn keyframes into smooth, continuous animated sequences without requiring advanced animation skills or expensive software.
+Sketch Motion is an accessible digital storytelling platform that transforms hand-drawn keyframes into smooth, continuous animated sequences without requiring advanced animation skills or expensive software.
 
 Core Features & Mechanics:
 • Hand-Drawn Keyframe Interpolation: Users draw a starting and ending image on a custom digital canvas with onion-skinning support to define motion endpoints.
@@ -138,7 +138,7 @@ Key Engineering Challenges:
     ],
     date: "August 2026",
     tags: ["Next.js", "React", "TypeScript", "Gemini API", "Google Veo", "HTML5 Canvas"],
-    githubUrl: "https://github.com/ericchen356/sketchime",
+    githubUrl: "https://github.com/ericchen356/skechmotion",
     devpostUrl: "https://devpost.com/software/sketchime",
   },
   {
