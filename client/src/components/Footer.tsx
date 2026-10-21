@@ -16,28 +16,11 @@ export function Footer() {
       <div className="animated-divider mb-5" />
       <div className="flex flex-col items-center justify-between gap-6 text-xs text-[#7c7469] sm:flex-row sm:gap-4 sm:text-sm">
         
-        {/* Left: Branding Badge */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:order-2 sm:justify-end">
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em]">Ryan Wu</span>
-          <div className="group inline-flex items-center gap-2 rounded-full border border-[#d8d1c6] bg-[#faf8f4]/70 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b64b32] hover:shadow-[0_4px_12px_rgba(182,75,50,0.12)]">
-            <a className="px-1 transition-colors hover:text-[#b64b32]" href="https://uoftwebring.com/redirect?nav=prev&id=56" aria-label="Previous site in UofT Webring">
-              ←
-            </a>
-            <a className="flex items-center" href="https://uoftwebring.com" target="_blank" rel="noopener noreferrer" aria-label="UofT Webring home">
-              <img
-                src="https://uoftwebring.com/ring_logo.svg"
-                alt="UofT Webring"
-                className="w-6 h-auto transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
-              />
-            </a>
-            <a className="inline-flex items-center px-1 transition-[transform,color] duration-200 hover:translate-x-1 hover:text-[#b64b32]" href="https://uoftwebring.com/redirect?nav=next&id=56" aria-label="Next site in UofT Webring">
-              →
-            </a>
-          </div>
-        </div>
+        {/* Branding */}
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em]">Ryan Wu</span>
 
-        {/* Right: Interactive Email Container */}
-        <div className="flex flex-col items-center gap-2 sm:order-1 sm:items-start sm:gap-1">
+        {/* Contact */}
+        <div className="flex flex-col items-center gap-2 sm:items-end sm:gap-1">
           <span className="font-mono text-[10px] uppercase tracking-[0.16em]">Get in touch</span>
           <div className="inline-flex items-center gap-2 text-[#1b1a18]">
             <a

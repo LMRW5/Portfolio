@@ -256,7 +256,7 @@ export function Home() {
               className="max-w-xl"
             >
               <h2 className="max-w-lg font-['Space_Grotesk'] text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#1b1a18] sm:text-5xl lg:text-[3.5rem]">
-                Hi, my name is <motion.span layoutId="ryan-name" className="inline-block">Ryan Wu</motion.span>.
+                Hi, my name is <span className="inline-block whitespace-nowrap"><motion.span layoutId="ryan-name" className="inline-block">Ryan Wu</motion.span>.</span>
               </h2>
               <p className="mt-6 max-w-lg text-[15px] leading-7 text-[#4f4a43]">
                 I’m currently studying computer science at the University of Toronto. I love working with software, learning new technologies, and building things along the way.
