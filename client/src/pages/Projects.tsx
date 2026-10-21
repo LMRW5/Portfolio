@@ -14,11 +14,60 @@ export interface ExtendedProjectData extends ProjectData {
 
 const projectsData: ExtendedProjectData[] = [
   {
+    id: "reshape-it",
+    title: "Reshape It",
+    shortDescription:
+      "We built JARVIS for urban planning. Create models using hand gestures and voice commands. See the impacts of your designs in real-time.",
+    fullDescription: `Submission for Hack the Valley V11. \n\nReshape It transforms urban planning into an interactive, AI-powered, community-driven design experience. Residents can explore a realistic 3D Toronto neighbourhood, redesign buildings and public spaces, and investigate potential environmental, spatial, and economic impacts.
+
+Design your city, your way. Draw building footprints; move, rotate, resize, and copy structures; customize materials and facades; add green roofs; and reshape public spaces with parks, ponds, promenades, and transit infrastructure. Interact with mouse and touch, or experiment with hands-free gesture and voice controls.
+
+Meet Bob, a personal AI urban planner. Powered by Gemini, voice recognition, and ElevenLabs text-to-speech, Bob lets users request design changes, control the scene, ask about environmental impacts, and hear spoken explanations using natural language.
+
+See the consequences of design decisions with live estimates for park shadows, embodied carbon, rooftop solar potential, daylight, urban heat, housing capacity, zoning constraints, and construction costs. Explore different times of day, seasonal sun angles, and historical Toronto weather to investigate potential neighbourhood impacts.
+
+Turn community ideas into a shared vision. The Mayor Screen displays proposals independently supported by at least three people as ghosts on the 3D map; opacity and saturation reflect support, with counts and participant share shown alongside. It does not rank or recommend ideas. Merge Ideas combines compatible suggestions into a cohesive spatial proposal—for example, joining green-space ideas into a connected park and promenade while retaining other proposed features. A read-only officials dashboard presents aggregated proposals and planning metrics to help explore public preferences and alternative scenarios.
+
+The project brings interactive 3D city design, AI assistance, sustainability analysis, and community-driven plan generation together, helping residents redesign their city, understand trade-offs, and see how individual ideas can contribute to a shared future.`,
+    image: "https://substackcdn.com/image/fetch/$s_!TUYL!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca131b86-724e-4e6b-b6cd-5f7c47daa599_1920x814.jpeg",
+    tags: ["Gemini", "MediaPipe", "React", "Three.js", "TypeScript"],
+    date: "October 2026",
+    teammates: [
+      { name: "Catherine Susilo", url: "https://www.linkedin.com/in/catherine-susilo-a04574256/" },
+      { name: "Ritvik Aggarwal", url: "https://www.linkedin.com/in/aggarwal-ritvik/" },
+      { name: "Olivia Choi", url: "https://www.linkedin.com/in/olivia-choy-313816389/"},
+    ],
+    githubUrl: "https://github.com/CatherineSusilo/sustainable-buildings",
+    devpostUrl: "https://devpost.com/software/future-craft",
+    media: [
+      {
+        type: "video",
+        url: "youtube.com/watch?v=PlBd5KfnUQM&feature=youtu.be",
+        title: "Devpost Submission Video",
+      },
+      {
+        type: "image",
+        url: "//d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/605/690/datas/gallery.jpg",
+        title: "Landing Page",
+      },
+      {
+        type: "image",
+        url: "//d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/605/689/datas/gallery.jpg",
+        title: "Demo Proposals",
+      },
+      {
+        type: "image",
+        url: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/605/941/datas/gallery.jpg",
+        title: "Mayor View",
+      }
+    ],
+  },
+  {
     id: "scaleup",
     title: "ScaleUp",
     shortDescription:
 "Learn any instrument through dynamically generated RPG skill trees, real-time Web Audio pitch detection, and AI feedback.",
-    fullDescription: `Submission for Ignition Hacks. \n\nScaleUp is an AI tutor that listens while you play, analyzes your posture, and teaches you in real-time through RPG-style skill trees generated dynamically.
+    fullDescription: `Submission for Ignition Hacks V7. \n\nScaleUp is an AI tutor that listens while you play, analyzes your posture, and teaches you in real-time through RPG-style skill trees generated dynamically.
 
 Core Features & Mechanics:
 • RPG Skill Trees & Shared Catalog: Choose from instruments (piano, guitar, violin, trumpet, drums, banjo) and unlock nodes. A shared skill catalogue auto-completes overlapping skills so you never re-learn what you know.

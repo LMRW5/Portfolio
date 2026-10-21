@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Outlet, useLocation } from "react-router-dom";
+import { LayoutGroup, motion } from "framer-motion";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { AnimatedBackground } from "../components/AnimatedBackground";
@@ -9,9 +9,12 @@ import { SiDevpost } from "react-icons/si";
 
 export function MainTemplate() {
   const name = "Ryan Wu";
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   return (
+    <LayoutGroup id="portfolio-name">
     <div className="relative flex min-h-screen flex-col text-[#1b1a18]">
       <AnimatedBackground />
 
@@ -30,13 +33,15 @@ export function MainTemplate() {
           className="mb-6 flex flex-col justify-between gap-4 border-b border-[#d8d1c6] pb-4 sm:flex-row sm:items-end"
         >
           
-          {/* Interactive Proximity-Based Name */}
-          <div className="relative group cursor-pointer inline-block">
-            <h1 
-              className="font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.06em] sm:text-6xl flex items-center select-none"
-              onMouseLeave={() => setHoverIndex(null)}
-            >
-              {name.split("").map((char, i) => {
+          {/* Shared name moves between the home intro and page header */}
+          {!isHome && (
+            <div className="relative group cursor-pointer inline-block">
+              <motion.h1
+                layoutId="ryan-name"
+                className="font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.06em] sm:text-6xl flex items-center select-none"
+                onMouseLeave={() => setHoverIndex(null)}
+              >
+                {name.split("").map((char, i) => {
                 const distance = hoverIndex !== null ? Math.abs(hoverIndex - i) : null;
 
                 let translateY = 0;
@@ -64,9 +69,10 @@ export function MainTemplate() {
                     {char}
                   </motion.span>
                 );
-              })}
-            </h1>
-          </div>
+                })}
+              </motion.h1>
+            </div>
+          )}
 
           {/* Social Links */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-[#7c7469] pb-1">
@@ -106,5 +112,6 @@ export function MainTemplate() {
         <Footer />
       </footer>
     </div>
+    </LayoutGroup>
   );
 }
