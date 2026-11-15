@@ -107,7 +107,7 @@ const currentRoles: CurrentRole[] = [
       initials: "C",
       color: "#3474a5",
       href: "https://create.utsc.utoronto.ca/",
-      logoSrc: "https://media.licdn.com/dms/image/v2/D4D0BAQG-Ux1bQcZ8BA/company-logo_100_100/company-logo_100_100/0/1710642011404?e=1794441600&v=beta&t=CN2lHpf_qMkyWYF7CJOUqp4cj15i2AnWJIrF6tKllJY",
+      logoSrc: "https://snipboard.io/TpnzfX.jpg",
     },
     detail: "Leading software developement for team of 7 of CREATE UofT’s 2026-2027 season, building a kareoke coach machine learning application.",
   },
@@ -118,7 +118,7 @@ const currentRoles: CurrentRole[] = [
       initials: "W3",
       color: "#7253a3",
       href: "https://www.web3uoft.com/",
-      logoSrc: "https://media.licdn.com/dms/image/v2/D4D0BAQFeLDcvMsxvqA/company-logo_100_100/company-logo_100_100/0/1688323383659/web3uoft_logo?e=1794441600&v=beta&t=LSmcYaU-vVAqZiizT6bGkKSru3JpEZg9Pt-0cVu7tr4",
+      logoSrc: "https://snipboard.io/4O9xAs.jpg",
     },
     detail: "Leading the technology team for Web3 Student Group at UofT, managing current software applications and helping organize Web3's flagship Da-Vinci Hackathon.",
   },
@@ -143,7 +143,7 @@ const experience: Experience[] = [
       initials: "23",
       color: "#42c742",
       href: "https://sites.google.com/view/23e2/home",
-      logoSrc: "https://media.licdn.com/dms/image/v2/D560BAQGBvr694gkn4Q/company-logo_100_100/B56ZWcntpiHsAU-/0/1742089411468/23e2_digital_logo?e=1794441600&v=beta&t=M53lkLPRl2q1CC6-gGdmaR3yQOfyt0FDnvHlha4Qyz0",
+      logoSrc: "https://snipboard.io/0628Rk.jpg",
     },
     detail: "Managed google ads campagins for cleints, optimized ad performance, and created marketing content for social media platforms.",
   },
@@ -154,7 +154,7 @@ const experience: Experience[] = [
       initials: "IG",
       color: "#b64b74",
       href: "https://www.instagram.com/skewteria/",
-      logoSrc: "https://media.licdn.com/dms/image/v2/C4E0BAQFt6KqGwvGCzg/company-logo_100_100/company-logo_100_100/0/1652805738201/instagram_logo?e=1794441600&v=beta&t=0yKpslYVo5Gj50K6up8_mSbKTmzIsddXlRK4vWMeVXY",
+      logoSrc: "https://unblast.com/wp-content/uploads/2025/07/instagram-logo-colored.jpg",
     },
     detail: "Produced Formula One videos and posts for Instagram, building a total audience reach of more than 12 million views.",
   },
@@ -165,7 +165,7 @@ const experience: Experience[] = [
       initials: "TPL",
       color: "#397451",
       href: "https://tpl.ca/",
-      logoSrc: "https://media.licdn.com/dms/image/v2/C560BAQEs13uvVuAfoQ/company-logo_100_100/company-logo_100_100/0/1630634767997/toronto_public_library_logo?e=1794441600&v=beta&t=sBiwmfeOcNOYzpHBDWsvHrq1uk3rT6dai0I-c2sFFB4",
+      logoSrc: "https://www.citt.org/_Modules/Zine/40/17087_TPL_2bLogo.jpg",
     },
     detail: "Teaching young readers to build confidence with reading through the Toronto Public Library’s Leading to Reading volunteer program.",
   },
@@ -176,7 +176,7 @@ const experience: Experience[] = [
       initials: "SLYE",
       color: "#979704",
       href: "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=788&title=L%27Amoreaux-Community-Recreation-Centre",
-      logoSrc: "https://media.licdn.com/dms/image/v2/C560BAQGvX9W1CrhIgQ/company-logo_100_100/company-logo_100_100/0/1631314271598?e=1794441600&v=beta&t=n0Sa9ne7Gnq3dZWxD11_YCathfyxB0J9mIkGd3khs_A",
+      logoSrc: "https://snipboard.io/L19YAB.jpg",
     },
     detail: "Organizing community events and programs for youth at the L'Amoreaux community center. Hosted events like a volleyball tournament and a youth paint night.",
   },
@@ -284,7 +284,7 @@ export function Home() {
                 />
               </div>
               <div className="absolute bottom-0 left-0 h-32 w-24 overflow-hidden border-[6px] border-[#f4f1eb] bg-[#dce2da] sm:h-40 sm:w-32">
-                <img src="https://media.licdn.com/dms/image/v2/D5603AQGYYUqZDrDUsA/profile-displayphoto-scale_400_400/B56Z8tv8AmGoAg-/0/1783178969516?e=1793836800&v=beta&t=ISBzXoLKjq4v50UxgFD6KRX-RbWh01m2ECeoyaujGaU" alt="Ryan Wu" className="h-full w-full object-cover" />
+                <img src="https://snipboard.io/5Iq7e8.jpg" alt="Ryan Wu" className="h-full w-full object-cover" />
               </div>
               <figcaption className="absolute bottom-1 right-0 text-right text-xs text-[#7c7469]">
                 University of Toronto Scarborough
